@@ -2,6 +2,14 @@ pipeline{
     agent any
 
     stages{
+        // this is comments
+        /* 
+            multi line comments
+            line 1 
+            line 2
+            line 3 comment 
+        */
+        /*
         stage ('Build') {
             agent {
                 docker {
@@ -20,6 +28,7 @@ pipeline{
                 '''
             }
         }
+        */ 
         stage ("Test") {
             agent {
                 docker {
