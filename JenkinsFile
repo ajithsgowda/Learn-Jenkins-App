@@ -7,7 +7,6 @@ pipeline {
     }
 
     stages {
-
         stage('Build') {
             agent {
                 docker {
@@ -95,9 +94,10 @@ pipeline {
         }
 
         stage('Approval') {
-
             steps {
-                input cancel: 'No, I want to cancel the deployment.', message: 'Ready to Deploy?', ok: 'Yes, I am sure to Deploy'
+                timeout(time: 30, unit: 'SECONDS') {
+                    input cancel: 'No, I want to cancel the deployment.', message: 'Ready to Deploy?', ok: 'Yes, I am sure to Deploy'
+                }
             }
         }
 
